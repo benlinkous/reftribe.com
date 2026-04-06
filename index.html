@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ref Tribe — Officials Supporting Officials</title>
+<meta name="description" content="A community for new and aspiring sports officials. Football, basketball, softball, and baseball. Gear guides, real talk, and a tribe that supports instead of complains." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#0a0a0a;
+  --dark:#111;
+  --surface:#1a1a1a;
+  --surface2:#222;
+  --border:#2a2a2a;
+  --border2:#3a3a3a;
+  --text:#f0ede8;
+  --muted:#9a9888;
+  --faint:#555;
+  --stripe:#1a1a2e;
+  --gold:#e8b84b;
+  --gold2:#d4a030;
+  --gold-dim:rgba(232,184,75,0.12);
+  --white:#fff;
+  --green:#22c55e;
+  --green-dim:rgba(34,197,94,0.1);
+  --red:#ef4444;
+  --display:'Oswald',sans-serif;
+  --body:'Source Sans 3',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--text);font-family:var(--body);line-height:1.7;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+
+/* ── NAV ── */
+nav{
+  background:var(--black);border-bottom:3px solid var(--gold);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2rem;position:sticky;top:0;z-index:100;
+}
+.nav-brand{
+  font-family:var(--display);font-size:1.4rem;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;color:var(--text);
+}
+.nav-brand em{color:var(--gold);font-style:normal;}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{
+  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;
+  color:var(--muted);padding:0.5rem 1.1rem;border-left:1px solid var(--border);
+  transition:all 0.2s;
+}
+.nav-links a:hover{color:var(--gold);background:var(--surface);}
+.nav-cta{background:var(--gold) !important;color:var(--black) !important;font-weight:700 !important;}
+.nav-cta:hover{opacity:0.88;}
+.nav-toggle{display:none;background:none;border:1px solid var(--border2);color:var(--text);padding:0.45rem 0.7rem;cursor:pointer;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;}
+@media(max-width:720px){
+  nav{padding:0.85rem 1.5rem;}
+  .nav-toggle{display:block;}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--black);border-bottom:2px solid var(--gold);}
+  .nav-links.open{display:flex;}
+  .nav-links a{border-left:none;border-bottom:1px solid var(--border);padding:0.75rem 1.5rem;}
+}
+
+/* ── HERO ── */
+.hero{
+  background:var(--black);
+  padding:6rem 2rem 5rem;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 30%,rgba(232,184,75,0.08) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 70%,rgba(26,26,46,0.6) 0%,transparent 50%);
+}
+/* subtle field lines */
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(
+    90deg,transparent 0px,transparent 58px,
+    rgba(255,255,255,0.015) 58px,rgba(255,255,255,0.015) 60px
+  );pointer-events:none;
+}
+.hero-inner{max-width:760px;position:relative;z-index:1;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold-dim);border:1px solid rgba(232,184,75,0.25);
+  color:var(--gold);font-family:var(--mono);font-size:0.62rem;
+  letter-spacing:0.12em;padding:0.35rem 0.9rem;margin-bottom:1.75rem;
+}
+.hero h1{
+  font-family:var(--display);font-size:clamp(2.8rem,7vw,5.5rem);
+  font-weight:700;letter-spacing:0.04em;text-transform:uppercase;
+  color:var(--text);line-height:1.0;margin-bottom:1rem;
+}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero-sub{
+  font-size:1.15rem;font-weight:300;color:var(--muted);
+  max-width:560px;line-height:1.85;margin-bottom:2.5rem;
+}
+.hero-sub strong{color:var(--text);font-weight:500;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem;}
+.btn-gold{
+  display:inline-block;background:var(--gold);color:var(--black);
+  font-family:var(--display);font-weight:700;font-size:0.9rem;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.85rem 1.75rem;transition:opacity 0.15s;
+}
+.btn-gold:hover{opacity:0.88;}
+.btn-outline{
+  display:inline-block;background:transparent;color:var(--text);
+  font-family:var(--display);font-weight:600;font-size:0.9rem;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.85rem 1.75rem;border:2px solid var(--border2);
+  transition:border-color 0.15s;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.sports-row{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  border-top:1px solid var(--border);padding-top:2rem;
+}
+.sport-pill{
+  display:flex;align-items:center;gap:0.5rem;
+  background:var(--surface);border:1px solid var(--border2);
+  padding:0.5rem 1rem;font-family:var(--mono);font-size:0.6rem;
+  letter-spacing:0.1em;color:var(--muted);
+}
+.sport-pill em{font-style:normal;color:var(--gold);}
+
+/* ── PHILOSOPHY ── */
+.philosophy-band{
+  background:var(--gold);padding:3rem 2rem;text-align:center;
+}
+.philosophy-band p{
+  font-family:var(--display);font-size:clamp(1.2rem,2.5vw,1.8rem);
+  font-weight:600;letter-spacing:0.03em;text-transform:uppercase;
+  color:var(--black);max-width:800px;margin:0 auto;line-height:1.4;
+}
+
+/* ── SECTIONS ── */
+.section{padding:5rem 2rem;max-width:1060px;margin:0 auto;}
+.dark-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 2rem;}
+.dark-inner{max-width:1060px;margin:0 auto;}
+.eyebrow{
+  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;
+  color:var(--gold);margin-bottom:0.6rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.eyebrow::before{content:'//';color:var(--faint);}
+h2{
+  font-family:var(--display);font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:700;letter-spacing:0.04em;text-transform:uppercase;
+  color:var(--text);margin-bottom:0.75rem;line-height:1.1;
+}
+.section-sub{color:var(--muted);font-size:1rem;max-width:520px;line-height:1.75;margin-bottom:2.5rem;}
+
+/* ── WHY IT MATTERS ── */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.why-text p{font-size:1rem;color:var(--muted);line-height:1.9;margin-bottom:1rem;}
+.why-text p strong{color:var(--text);}
+.tribe-pillars{display:flex;flex-direction:column;gap:1px;}
+.tribe-pillar{
+  background:var(--surface2);border-left:3px solid var(--gold);
+  padding:1.25rem 1.5rem;transition:background 0.15s;
+}
+.tribe-pillar:hover{background:var(--border);}
+.tp-name{
+  font-family:var(--display);font-size:0.85rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.3rem;
+}
+.tp-desc{font-size:0.875rem;color:var(--muted);line-height:1.65;}
+
+/* ── GEAR GUIDE ── */
+.gear-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.gear-card{
+  background:var(--surface);border:1px solid var(--border);
+  padding:1.75rem;border-top:3px solid var(--gold);
+  transition:border-color 0.2s;
+}
+.gear-card:hover{border-color:var(--gold2);}
+.gear-sport{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;
+}
+.gear-card h3{
+  font-family:var(--display);font-size:1rem;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--text);margin-bottom:0.5rem;
+}
+.gear-list{list-style:none;display:flex;flex-direction:column;gap:0;}
+.gear-item{
+  display:flex;align-items:center;gap:0.5rem;
+  padding:0.5rem 0;border-bottom:1px solid var(--border);
+  font-size:0.875rem;color:var(--muted);
+}
+.gear-item:last-child{border-bottom:none;}
+.gear-check{color:var(--green);font-size:0.75rem;flex-shrink:0;}
+.gear-note{font-family:var(--mono);font-size:0.55rem;color:var(--faint);margin-top:0.75rem;line-height:1.6;}
+
+/* ── GETTING STARTED STEPS ── */
+.steps{display:flex;flex-direction:column;gap:1px;}
+.step{
+  display:flex;gap:1.5rem;background:var(--surface2);
+  padding:1.5rem;border:1px solid var(--border);
+  transition:background 0.15s;align-items:flex-start;
+}
+.step:hover{background:var(--border);}
+.step-num{
+  font-family:var(--display);font-size:2.5rem;font-weight:700;
+  color:var(--gold);line-height:1;flex-shrink:0;width:48px;
+  opacity:0.6;
+}
+.step-body{}
+.step-title{
+  font-family:var(--display);font-size:1rem;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--text);margin-bottom:0.3rem;
+}
+.step-desc{font-size:0.9rem;color:var(--muted);line-height:1.7;}
+
+/* ── SPORTS COVERAGE ── */
+.sports-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+.sport-card{
+  background:var(--surface2);border:1px solid var(--border);
+  padding:2rem;display:flex;gap:1.25rem;align-items:flex-start;
+}
+.sport-icon{font-size:2rem;flex-shrink:0;}
+.sport-name{
+  font-family:var(--display);font-size:1.1rem;font-weight:700;
+  letter-spacing:0.05em;text-transform:uppercase;color:var(--text);
+  margin-bottom:0.3rem;
+}
+.sport-primary{color:var(--gold);font-size:0.6rem;font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem;}
+.sport-desc{font-size:0.875rem;color:var(--muted);line-height:1.65;}
+
+/* ── WRITING ── */
+.writing-section{padding:5rem 2rem;max-width:1060px;margin:0 auto;}
+.writing-placeholder{
+  background:var(--surface);border:1px solid var(--border);
+  border-left:4px solid var(--gold);padding:2.5rem;
+  text-align:center;
+}
+.writing-placeholder h3{
+  font-family:var(--display);font-size:1.2rem;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--text);margin-bottom:0.75rem;
+}
+.writing-placeholder p{font-size:0.95rem;color:var(--muted);line-height:1.8;max-width:520px;margin:0 auto 1.5rem;}
+.topics-list{
+  display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-top:1.25rem;
+}
+.topic-tag{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;
+  background:var(--gold-dim);border:1px solid rgba(232,184,75,0.2);
+  color:var(--gold);padding:0.25rem 0.65rem;
+}
+
+/* ── ABOUT ── */
+.about-band{
+  background:var(--surface);border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);padding:5rem 2rem;
+}
+.about-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:start;}
+.about-text p{font-size:0.975rem;color:var(--muted);line-height:1.9;margin-bottom:1rem;}
+.about-text p strong{color:var(--text);}
+.contact-box{background:var(--dark);border:1px solid var(--border);padding:2rem;}
+.contact-box h3{
+  font-family:var(--display);font-size:0.85rem;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);
+}
+.clist{list-style:none;display:flex;flex-direction:column;gap:0;}
+.clist li{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.6rem 0;border-bottom:1px solid var(--border);
+  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;
+}
+.clist li:last-child{border-bottom:none;}
+.ck{color:var(--faint);text-transform:uppercase;}
+.cv{color:var(--text);transition:color 0.15s;}
+.cv:hover{color:var(--gold);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--black);border-top:3px solid var(--gold);
+  padding:2rem;display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+}
+.footer-brand{
+  font-family:var(--display);font-weight:700;font-size:1.1rem;
+  letter-spacing:0.06em;text-transform:uppercase;color:var(--text);
+}
+.footer-brand em{color:var(--gold);font-style:normal;}
+.footer-copy{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.1em;color:var(--faint);}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity 0.6s,transform 0.6s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:860px){
+  .why-grid,.about-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .gear-grid,.sports-grid{grid-template-columns:1fr 1fr;}
+  .section,.writing-section{padding:3.5rem 1.5rem;}
+  .dark-section,.about-band{padding:3.5rem 1.5rem;}
+  footer{flex-direction:column;text-align:center;padding:1.5rem;}
+}
+@media(max-width:520px){.gear-grid,.sports-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand"><em>Ref</em> Tribe</div>
+  <button class="nav-toggle" id="navToggle">Menu</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#why">Why a Tribe</a></li>
+    <li><a href="#gear">Gear Guide</a></li>
+    <li><a href="#start">Getting Started</a></li>
+    <li><a href="#writing">From the Field</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:callmelink@benlinkous.com" class="nav-cta">Join the Tribe</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🏈 Football · Basketball · Softball · Baseball</div>
+    <h1>Officials Supporting <em>Officials.</em></h1>
+    <p class="hero-sub">Officiating is one of the hardest jobs in sports — and one of the most rewarding. <strong>Ref Tribe exists for the people who show up to do it</strong> — especially the ones just getting started.</p>
+    <div class="hero-actions">
+      <a href="#gear" class="btn-gold">Gear Guide for New Officials</a>
+      <a href="#start" class="btn-outline">How to Get Started</a>
+    </div>
+    <div class="sports-row">
+      <div class="sport-pill"><em>🏈</em> Football</div>
+      <div class="sport-pill"><em>🏀</em> Basketball</div>
+      <div class="sport-pill"><em>⚾</em> Baseball</div>
+      <div class="sport-pill"><em>🥎</em> Softball</div>
+      <div class="sport-pill"><em>🎽</em> High School & Youth</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<div class="philosophy-band">
+  <p>"Every sport needs officials. Not complainers — officials. People who study the rules, show up on time, and make the game possible."</p>
+</div>
+
+<!-- WHY A TRIBE -->
+<section class="section" id="why">
+  <div class="why-grid reveal">
+    <div class="why-text">
+      <div class="eyebrow">Why a Tribe</div>
+      <h2>Support Over Complaint</h2>
+      <p>Officiating comes with criticism. That's part of the job — coaches complain, fans complain, sometimes players complain. You learn to handle it. What you shouldn't have to handle is <strong>a lack of support from your own community.</strong></p>
+      <p>The Ref Tribe concept is simple: officials supporting other officials. Sharing knowledge, answering questions, helping new people get their footing. A place where the question "how do I get started?" gets a real answer instead of a shrug.</p>
+      <p>I'm an average high school official — football and basketball mainly, some softball and baseball. I don't claim to know everything. But I know what it was like to be new, what I wish someone had told me, and what the job actually looks like from the field.</p>
+      <p>This site is for the person who wants to become an official — and for the officials who want to be part of something bigger than just their local chapter.</p>
+    </div>
+    <div class="tribe-pillars">
+      <div class="tribe-pillar">
+        <div class="tp-name">🎓 Knowledge Sharing</div>
+        <div class="tp-desc">Rules, mechanics, positioning, game management — shared openly by people who learned the hard way so you don't have to.</div>
+      </div>
+      <div class="tribe-pillar">
+        <div class="tp-name">🤝 Encouragement</div>
+        <div class="tp-desc">New officials make mistakes. Everyone did. The Tribe is a place where mistakes become learning, not criticism.</div>
+      </div>
+      <div class="tribe-pillar">
+        <div class="tp-name">🛒 Practical Help</div>
+        <div class="tp-desc">What gear do you actually need? What associations should you join? What does a first game really look like? Real answers.</div>
+      </div>
+      <div class="tribe-pillar">
+        <div class="tp-name">📖 Honest Perspective</div>
+        <div class="tp-desc">Officiating is hard, rewarding, sometimes frustrating, and worth doing. That's the honest version — and that's what you'll get here.</div>
+      </div>
+      <div class="tribe-pillar">
+        <div class="tp-name">🏅 Pride in the Craft</div>
+        <div class="tp-desc">Being a good official takes real work. The Tribe takes that seriously — and celebrates the officials who show up and do it right.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GEAR GUIDE -->
+<div class="dark-section" id="gear">
+  <div class="dark-inner">
+    <div class="eyebrow reveal">Gear Guide</div>
+    <h2 class="reveal">What You Actually Need to Get Started</h2>
+    <p class="section-sub reveal">This isn't an exhaustive list — it's the practical starter kit. What you need before your first game, without overbuying.</p>
+    <div class="gear-grid reveal">
+      <div class="gear-card">
+        <div class="gear-sport">🏈 Football</div>
+        <h3>Football Starter Kit</h3>
+        <ul class="gear-list">
+          <li><span class="gear-check">✓</span>Black & white striped shirt (short & long sleeve)</li>
+          <li><span class="gear-check">✓</span>Black pants (official cut)</li>
+          <li><span class="gear-check">✓</span>Black cap (official style)</li>
+          <li><span class="gear-check">✓</span>Black shoes (leather or approved)</li>
+          <li><span class="gear-check">✓</span>White bean bag flag (penalty marker)</li>
+          <li><span class="gear-check">✓</span>Yellow penalty flag</li>
+          <li><span class="gear-check">✓</span>Down indicator (bean bag or card)</li>
+          <li><span class="gear-check">✓</span>Whistle (Fox 40 or equivalent)</li>
+          <li><span class="gear-check">✓</span>Lanyard for whistle</li>
+          <li><span class="gear-check">✓</span>Black belt</li>
+        </ul>
+        <div class="gear-note">// Check your state association for specific uniform requirements — they vary.</div>
+      </div>
+      <div class="gear-card">
+        <div class="gear-sport">🏀 Basketball</div>
+        <h3>Basketball Starter Kit</h3>
+        <ul class="gear-list">
+          <li><span class="gear-check">✓</span>Black & white striped shirt</li>
+          <li><span class="gear-check">✓</span>Black pants (official cut)</li>
+          <li><span class="gear-check">✓</span>Black shoes (low or mid, athletic)</li>
+          <li><span class="gear-check">✓</span>Whistle (Fox 40 or equivalent)</li>
+          <li><span class="gear-check">✓</span>Lanyard or wrist strap for whistle</li>
+          <li><span class="gear-check">✓</span>Timing device / watch</li>
+          <li><span class="gear-check">✓</span>Black belt</li>
+          <li><span class="gear-check">✓</span>Black socks</li>
+        </ul>
+        <div class="gear-note">// Many associations require specific shirt styles. Verify before buying.</div>
+      </div>
+      <div class="gear-card">
+        <div class="gear-sport">⚾🥎 Baseball & Softball</div>
+        <h3>Baseball/Softball Starter Kit</h3>
+        <ul class="gear-list">
+          <li><span class="gear-check">✓</span>Navy or black shirt (association specific)</li>
+          <li><span class="gear-check">✓</span>Heather gray or black pants</li>
+          <li><span class="gear-check">✓</span>Plate shoes (steel-toed)</li>
+          <li><span class="gear-check">✓</span>Chest protector (plate umpire)</li>
+          <li><span class="gear-check">✓</span>Mask (plate umpire)</li>
+          <li><span class="gear-check">✓</span>Shin guards (plate umpire)</li>
+          <li><span class="gear-check">✓</span>Ball bag</li>
+          <li><span class="gear-check">✓</span>Indicator (count clicker)</li>
+          <li><span class="gear-check">✓</span>Brush (for plate)</li>
+          <li><span class="gear-check">✓</span>Whistle (optional, some prefer voice)</li>
+        </ul>
+        <div class="gear-note">// Baseball/softball have the highest equipment cost — start with base umpire gear if budget is tight.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GETTING STARTED -->
+<section class="section" id="start">
+  <div class="eyebrow reveal">How to Get Started</div>
+  <h2 class="reveal">The Path From Interested to Official</h2>
+  <p class="section-sub reveal">The process varies by state and sport but follows a similar pattern everywhere.</p>
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <div class="step-title">Find Your State Association</div>
+        <div class="step-desc">Every state has a high school athletics association (Virginia has VHSL) that oversees officiating. Find yours — it's the starting point for registration, training requirements, and finding your local chapter.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <div class="step-title">Join a Local Officials Association</div>
+        <div class="step-desc">Local chapters handle game assignments, mentorship, and continuing education. This is your community — the people who will help you get your first games and support you when it gets hard.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <div class="step-title">Complete Required Training</div>
+        <div class="step-desc">Most states require a rules exam and some form of training before you can officiate. Do this seriously — knowing the rules isn't optional. The exam exists for a reason.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <div class="step-title">Get Your Gear</div>
+        <div class="step-desc">Use the gear guides above as a starting point. Don't overbuy — get what you need for your first season and upgrade as you go. Your chapter may have loaner equipment for new officials.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-body">
+        <div class="step-title">Work Your First Games</div>
+        <div class="step-desc">Start at youth or lower-level games. Be early. Dress sharp. Know your mechanics. Make mistakes — you will — and learn from them without beating yourself up. Every great official started somewhere.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">06</div>
+      <div class="step-body">
+        <div class="step-title">Keep Showing Up</div>
+        <div class="step-desc">The officials who improve are the ones who show up consistently, take feedback seriously, study the rules in the off-season, and stay humble. The job rewards commitment. Stick with it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPORTS COVERAGE -->
+<div class="dark-section">
+  <div class="dark-inner">
+    <div class="eyebrow reveal">Sports We Cover</div>
+    <h2 class="reveal">Football. Basketball. Baseball. Softball.</h2>
+    <p class="section-sub reveal">Written from the perspective of a working high school official — not a rulebook, not a lecture. Real experience from real games.</p>
+    <div class="sports-grid reveal">
+      <div class="sport-card">
+        <span class="sport-icon">🏈</span>
+        <div>
+          <div class="sport-name">Football</div>
+          <div class="sport-primary">Primary Sport</div>
+          <p class="sport-desc">High school football officiating — mechanics, positioning, crew communication, and the situations that catch new officials off guard. The most complex sport to officiate well.</p>
+        </div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-icon">🏀</span>
+        <div>
+          <div class="sport-name">Basketball</div>
+          <div class="sport-primary">Primary Sport</div>
+          <p class="sport-desc">The fastest-paced officiating job in high school sports. Court coverage, foul recognition, game management, and staying composed when the gym gets loud.</p>
+        </div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-icon">⚾</span>
+        <div>
+          <div class="sport-name">Baseball</div>
+          <div class="sport-primary">Secondary Sport</div>
+          <p class="sport-desc">America's game has some of the most nuanced rules in officiating. Plate work, base coverage, the balk, and why you always need to know the count.</p>
+        </div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-icon">🥎</span>
+        <div>
+          <div class="sport-name">Softball</div>
+          <div class="sport-primary">Secondary Sport</div>
+          <p class="sport-desc">Similar to baseball but with its own rules and rhythms. Fast pitch mechanics, the circle rule, and why it's a sport worth learning to officiate.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WRITING -->
+<section class="writing-section" id="writing">
+  <div class="eyebrow reveal">From the Field</div>
+  <h2 class="reveal">Writing Coming Soon</h2>
+  <div class="writing-placeholder reveal">
+    <h3>Real Talk from a Working Official</h3>
+    <p>Articles, observations, and honest perspective on officiating high school sports — from someone who's still out there doing it. Not highlights. Not complaints. Just the real experience of the job.</p>
+    <a href="https://substack.com/@callmelink" target="_blank" rel="noopener" class="btn-gold">Follow on Substack for Updates</a>
+    <div class="topics-list">
+      <span class="topic-tag">Your First Game</span>
+      <span class="topic-tag">Handling Criticism</span>
+      <span class="topic-tag">Rule Situations That Surprised Me</span>
+      <span class="topic-tag">Working with Your Crew</span>
+      <span class="topic-tag">Game Management</span>
+      <span class="topic-tag">Why Officials Quit</span>
+      <span class="topic-tag">Why Officials Stay</span>
+      <span class="topic-tag">The Tribe Mentality</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-band" id="about">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <div class="eyebrow">About Ref Tribe</div>
+      <h2>Who's Behind This</h2>
+      <p>I'm Ben Linkous — a retired Army Master Sergeant from Pulaski, Virginia. I officiate high school football and basketball, with some baseball and softball mixed in. I'm <strong>not an expert</strong>. I'm an average working official who enjoys the job and believes the officiating community is better when we support each other.</p>
+      <p>Ref Tribe started as an idea about what I wished existed when I was getting started — a place that gave practical answers without gatekeeping, encouraged new officials instead of hazing them, and treated the craft of officiating with the respect it deserves.</p>
+      <p>The writing will come as I have things worth saying. The gear guides are here now. The steps to getting started are here now. The rest will grow.</p>
+      <p>If you're an official who wants to contribute, or a new official who has questions — <strong>reach out.</strong></p>
+    </div>
+    <div class="contact-box reveal">
+      <h3>Get in Touch</h3>
+      <ul class="clist">
+        <li><span class="ck">Email</span><a href="mailto:callmelink@benlinkous.com" class="cv">callmelink@benlinkous.com</a></li>
+        <li><span class="ck">Substack</span><a href="https://substack.com/@callmelink" target="_blank" rel="noopener" class="cv">@callmelink</a></li>
+        <li><span class="ck">LinkedIn</span><a href="https://linkedin.com/in/benlinkous" target="_blank" rel="noopener" class="cv">benlinkous</a></li>
+        <li><span class="ck">Facebook</span><a href="https://facebook.com/ben.linkous.92" target="_blank" rel="noopener" class="cv">ben.linkous.92</a></li>
+        <li><span class="ck">Personal Site</span><a href="https://benlinkous.com" target="_blank" rel="noopener" class="cv">benlinkous.com</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><em>Ref</em> Tribe</div>
+  <div class="footer-copy">© <span id="yr"></span> Ben Linkous · Pulaski, Virginia · Officials Supporting Officials</div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+document.getElementById('navToggle').addEventListener('click',function(){
+  const n=document.getElementById('navLinks');
+  n.classList.toggle('open');
+  this.textContent=n.classList.contains('open')?'Close':'Menu';
+});
+const obs=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
